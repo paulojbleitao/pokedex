@@ -13,9 +13,11 @@ function capitalizeFirstLetter(string) {
 export function formatString(string) {
     let hyphenIndex = string.search('-');
     if (hyphenIndex !== -1) {
-        string = string.replace('-', ' ');
+        string = string.replace(/-/g, ' ');
         let substrings = string.split(' ');
-        return `${capitalizeFirstLetter(substrings[0])} ${capitalizeFirstLetter(substrings[1])}`;
+        substrings.forEach((element, index, substrings) => {
+            substrings[index] = capitalizeFirstLetter(substrings[index])});
+        return substrings.join(' ');
     } else {
         return capitalizeFirstLetter(string);
     }
