@@ -1,8 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-
 import Pokemon from './Pokemon';
-
 import './app.css';
 
 class App extends React.Component {

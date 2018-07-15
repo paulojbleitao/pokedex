@@ -22,4 +22,3 @@ export function formatString(string) {
         return capitalizeFirstLetter(string);
     }
 }
-
