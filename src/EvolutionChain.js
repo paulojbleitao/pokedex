@@ -36,25 +36,22 @@ class EvolutionChain extends React.Component {
             });
     }
 
+    createEvolutionChain(pokemon, chain) {
+        if (pokemon) {
+            chain.push(axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.species.name}/`));
+            pokemon.evolves_to.forEach(p => {
+                chain = this.createEvolutionChain(p, chain);
+            });
+        }
+        return chain;
+    }
+
     async getEvolutionChain () {
         const species = await axios.get(this.props.pokemon.species.url);
         const evolution = await axios.get(species.data.evolution_chain.url);
-        const pokemons = await this.createEvolutionChain(evolution.data);
-        return pokemons;
-    };
-    
-    async createEvolutionChain (evolution) {
-        let promises = [];
-        let currentCell = evolution.chain;
-    
-        while (currentCell) {
-            let nextPokemon = currentCell.evolves_to[0];
-            promises.push(axios.get(`https://pokeapi.co/api/v2/pokemon/${currentCell.species.name}/`));
-            currentCell = nextPokemon;
-        }
-    
-        let pokemons = await Promise.all(promises);
-        return pokemons.map((pokemon) => pokemon.data);
+        const chain = this.createEvolutionChain(evolution.data.chain, []);
+        const pokemons = await Promise.all(chain);
+        return pokemons.map(pokemon => pokemon.data);
     };
 
     render() {
