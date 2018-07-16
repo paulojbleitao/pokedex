@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatString } from './util';
+import { formatString } from './util/util';
 
 const Type = ({type}) => (
     <span className={`badge badge-primary ${type}`}>{formatString(type)}</span>

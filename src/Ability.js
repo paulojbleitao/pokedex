@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatString } from './util';
+import { formatString } from './util/util';
 
 const Ability = ({ability}) => {
     if (ability.is_hidden) {

@@ -2,7 +2,7 @@ import React from 'react';
 import abilitiesArray from './Ability';
 import typesArray from './Type';
 import EvolutionChain from './EvolutionChain';
-import { formatString, abilityOrAbilities } from './util';
+import { formatString, abilityOrAbilities } from './util/util';
 
 const Pokemon = ({ data }) => (
     <div className="jumbotron">
