@@ -1,26 +1,37 @@
+/* @flow */
+
 import React from 'react';
 import { formatString } from './util/util';
 
-const Ability = ({ability}) => {
-    if (ability.is_hidden) {
-        return (
-            <div>
-                {formatString(ability.ability.name)} (Hidden)
-            </div>);
-    } else {
-        return (
-            <div>
-                {formatString(ability.ability.name)}
-            </div>);
-    }
-}
+type AbilityType = {
+    slot: number,
+    is_hidden: boolean,
+    ability: {
+        url: string,
+        name: string,
+    },
+};
 
-const abilitiesArray = (abilities) => {
-    abilities = abilities.sort((a,b) => {
-        return a.slot - b.slot;
-    });
-    
-    return abilities.map(ability => <Ability key={ability.slot} ability={ability}/>);
-}
+type Props = {
+    ability: AbilityType,
+};
+
+const Ability = ({ ability } : Props) => {
+    const hidden = ability.is_hidden ? '(Hidden)' : null;
+    return (
+        <div>
+            {formatString(ability.ability.name)}
+            {' '}
+            {hidden}
+        </div>);
+};
+
+const abilitiesArray = (abilities: Array<AbilityType>) : Array<Ability> => {
+    const sortedAbilities = abilities.sort((a, b) => a.slot - b.slot);
+
+    return sortedAbilities.map(ability => (
+        <Ability key={ability.slot} ability={ability} />
+    ));
+};
 
 export default abilitiesArray;
