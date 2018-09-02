@@ -2,7 +2,7 @@ h1 {
     margin-top: 40px;
 }
 
-h6 {
+.subtitle {
     margin-bottom: 30px;
 }
 
@@ -32,14 +32,18 @@ h6 {
     padding-left: 5%;
 }
 
-.card {
-    width: 9rem;
+.evolution-title {
+    padding-top: 4%;
 }
 
-.card-header {
-    padding: 3px 9px;
-    font-size: 14px;
-    text-align: center
+.evolution-chain {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.evolution-cell {
+    cursor: pointer;
 }
 
 .list-group-item {

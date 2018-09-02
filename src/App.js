@@ -41,13 +41,14 @@ class App extends React.Component<Props, State> {
     render() {
         const { pokemonData, failure } = this.state;
         const pokemon = pokemonData === null
-            ? null : <Pokemon data={pokemonData} />;
+            ? null
+            : <Pokemon data={pokemonData} handleSearch={this.handleSearch} />;
         const showFailure = failure ? <Failure /> : null;
 
         return (
             <div className="everything">
                 <h1 className="center">Pokedex</h1>
-                <h6 className="center">
+                <h6 className="center subtitle">
                     Type in a Pokemon&apos;s name and press search!
                 </h6>
                 <SearchInput handleSearch={this.handleSearch} />

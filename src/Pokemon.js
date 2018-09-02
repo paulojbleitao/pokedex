@@ -6,7 +6,12 @@ import typesArray from './Type';
 import EvolutionChain from './EvolutionChain';
 import { formatString } from './util/util';
 
-const Pokemon = ({ data } : any) => (
+type Props = {
+    data: any,
+    handleSearch: string => void,
+}
+
+const Pokemon = ({ data, handleSearch } : Props) => (
     <div className="jumbotron">
         <div className="container">
             <div className="row">
@@ -32,10 +37,16 @@ const Pokemon = ({ data } : any) => (
             </div>
             <div className="row">
                 <div className="col center">
-                    <EvolutionChain pokemon={data} />
+                    <h6 className="evolution-title">Evolution Line:</h6>
                 </div>
-                <div className="col" />
-                <div className="col" />
+            </div>
+            <div className="row">
+                <div className="col center evolution-chain">
+                    <EvolutionChain
+                      pokemon={data}
+                      handleSearch={handleSearch}
+                    />
+                </div>
             </div>
         </div>
     </div>

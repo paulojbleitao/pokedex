@@ -1,14 +1,38 @@
+/* @flow */
+
 import React from 'react';
 import axios from 'axios';
 
-const EvolutionCell = ({ pokemon }: any) => (
+/* eslint-disable jsx-a11y/click-events-have-key-events,
+jsx-a11y/no-noninteractive-element-interactions */
+
+type CellProps = {
+    pokemon: any,
+    handleSearch: string => void,
+}
+
+const EvolutionCell = ({ pokemon, handleSearch }: CellProps) => (
     <div className="col">
-        <img src={pokemon.sprites.front_default} width="48px" alt="" />
+        <img
+          className="evolution-cell"
+          src={pokemon.sprites.front_default}
+          alt=""
+          onClick={() => handleSearch(pokemon.name)}
+        />
     </div>
 );
 
-class EvolutionChain extends React.Component {
-    constructor(props) {
+type ChainProps = {
+    pokemon: any,
+    handleSearch: string => void,
+}
+
+type ChainState = {
+    chain: Array<EvolutionCell>,
+}
+
+class EvolutionChain extends React.Component<ChainProps, ChainState> {
+    constructor(props : ChainProps) {
         super(props);
 
         this.state = { chain: [] };
@@ -29,7 +53,7 @@ class EvolutionChain extends React.Component {
         }
     }
 
-    async getEvolutionChain() {
+    async getEvolutionChain() : Promise<any> {
         const { pokemon } = this.props;
         const species = await axios.get(pokemon.species.url);
         const evolution = await axios.get(species.data.evolution_chain.url);
@@ -47,7 +71,7 @@ class EvolutionChain extends React.Component {
     }
 
     /* eslint-disable no-param-reassign */
-    createEvolutionChain(pokemon, chain) {
+    createEvolutionChain(pokemon: any, chain: Array<any>) {
         if (pokemon) {
             const species = pokemon.species.name;
             chain.push(axios
@@ -61,9 +85,10 @@ class EvolutionChain extends React.Component {
     /* eslint-enable no-param-reassign */
 
     render() {
+        const { handleSearch } = this.props;
         const { chain } = this.state;
         const evolution = chain.map(pokemon => (
-            <EvolutionCell pokemon={pokemon} />));
+            <EvolutionCell pokemon={pokemon} handleSearch={handleSearch} />));
         return <div className="row no-gutters">{evolution}</div>;
     }
 }
