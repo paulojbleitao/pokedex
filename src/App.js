@@ -4,6 +4,7 @@ import React from 'react';
 import axios from 'axios';
 import Pokemon from './Pokemon';
 import SearchInput from './SearchInput';
+import BASE_URL from './util/baseUrl';
 import './app.css';
 
 type Props = {};
@@ -28,9 +29,8 @@ class App extends React.Component<Props, State> {
     handleSearch: string => void;
     handleSearch(pokemonName : string) {
         const lowerCase = pokemonName.toLowerCase();
-        axios.get(`https://pokeapi.co/api/v2/pokemon/${lowerCase}/`)
+        axios.get(`${BASE_URL}/pokemon/${lowerCase}/`)
             .then((result) => {
-                console.log(result.data);
                 this.setState({ pokemonData: result.data, failure: false });
             })
             .catch(() => {

@@ -3,6 +3,7 @@
 import React from 'react';
 import axios from 'axios';
 import { formatString, abilityOrAbilities } from './util/util';
+import BASE_URL from './util/baseUrl';
 
 type AbilityType = {
     slot: number,
@@ -22,7 +23,7 @@ type State = {
 };
 
 async function getAbilityDescription(ability: string) {
-    const a = await axios.get(`https://pokeapi.co/api/v2/ability/${ability}`);
+    const a = await axios.get(`${BASE_URL}/ability/${ability}`);
     const description = a.data.effect_entries.filter(r => (
         r.language.name === 'en'
     ));

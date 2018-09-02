@@ -4,6 +4,7 @@ import React from 'react';
 import Abilities from './Ability';
 import typesArray from './Type';
 import EvolutionChain from './EvolutionChain';
+import MoveList from './MoveList';
 import { formatString } from './util/util';
 
 type Props = {
@@ -16,7 +17,7 @@ const Pokemon = ({ data, handleSearch } : Props) => (
         <div className="container">
             <div className="row">
                 <Name
-                  name={formatString(data.forms[0].name)}
+                  name={formatString(data.name)}
                   number={data.id}
                 />
             </div>
@@ -48,6 +49,7 @@ const Pokemon = ({ data, handleSearch } : Props) => (
                     />
                 </div>
             </div>
+            <MoveList pokemon={data.name} />
         </div>
     </div>
 );

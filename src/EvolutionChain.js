@@ -2,6 +2,7 @@
 
 import React from 'react';
 import axios from 'axios';
+import BASE_URL from './util/baseUrl';
 
 /* eslint-disable jsx-a11y/click-events-have-key-events,
 jsx-a11y/no-noninteractive-element-interactions */
@@ -65,7 +66,6 @@ class EvolutionChain extends React.Component<ChainProps, ChainState> {
     updateEvolutionChain() {
         this.getEvolutionChain()
             .then((pokemons) => {
-                console.log(pokemons);
                 this.setState({ chain: pokemons });
             });
     }
@@ -75,7 +75,7 @@ class EvolutionChain extends React.Component<ChainProps, ChainState> {
         if (pokemon) {
             const species = pokemon.species.name;
             chain.push(axios
-                .get(`https://pokeapi.co/api/v2/pokemon/${species}/`));
+                .get(`${BASE_URL}/pokemon/${species}/`));
             pokemon.evolves_to.forEach((p) => {
                 chain = this.createEvolutionChain(p, chain);
             });

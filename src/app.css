@@ -46,6 +46,22 @@ h1 {
     cursor: pointer;
 }
 
+.move-list {
+    padding-top: 3%;
+}
+
+.why {
+    margin-left: 1%;
+}
+
+.no-moves {
+    margin-left: 5%;
+}
+
+.explanation {
+    margin-left: 2%;
+}
+
 .list-group-item {
     padding: 3px 0px;
     font-size: 14px;
@@ -127,6 +143,20 @@ h1 {
 
 .fairy {
     background-color: #EE99AC;
+}
+
+.physical {
+    color: #FFC645;
+    background-color: #C7221B;
+}
+
+.special {
+    color: #93B2DB;
+    background-color: #50586F;
+}
+
+.status {
+    background-color: #8B878B;
 }
 
 .react-autosuggest__container {

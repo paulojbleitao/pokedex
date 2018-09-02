@@ -15,7 +15,7 @@ type PokemonType = {
     },
 };
 
-const Type = ({ type }: Props) => (
+export const Type = ({ type }: Props) => (
     <span className={`badge badge-primary ${type}`}>{formatString(type)}</span>
 );
 
