@@ -1,14 +1,20 @@
 /* @flow */
 
 import React from 'react';
-import abilitiesArray from './Ability';
+import Abilities from './Ability';
 import typesArray from './Type';
 import EvolutionChain from './EvolutionChain';
-import { formatString, abilityOrAbilities } from './util/util';
+import { formatString } from './util/util';
 
 const Pokemon = ({ data } : any) => (
     <div className="jumbotron">
         <div className="container">
+            <div className="row">
+                <Name
+                  name={formatString(data.forms[0].name)}
+                  number={data.id}
+                />
+            </div>
             <div className="row">
                 <div className="col center">
                     <img
@@ -16,24 +22,17 @@ const Pokemon = ({ data } : any) => (
                       src={data.sprites.front_default}
                       alt=""
                     />
+                    <div>
+                        {typesArray(data.types)}
+                    </div>
                 </div>
-                <div className="col">
-                    <Card
-                      category="Name"
-                      content={formatString(data.forms[0].name)}
-                    />
-                </div>
-                <div className="col">
-                    <Card
-                      category={abilityOrAbilities(data.abilities)}
-                      content={abilitiesArray(data.abilities)}
-                    />
+                <div className="col-8">
+                    <Abilities abilities={data.abilities} />
                 </div>
             </div>
             <div className="row">
                 <div className="col center">
                     <EvolutionChain pokemon={data} />
-                    {typesArray(data.types)}
                 </div>
                 <div className="col" />
                 <div className="col" />
@@ -42,20 +41,18 @@ const Pokemon = ({ data } : any) => (
     </div>
 );
 
-type CardProps = {
-    category: string,
-    content: any, // this needs fixing
+type NameProps = {
+    name: string,
+    number: number,
 };
 
-const Card = ({ category, content } : CardProps) => (
-    <div className="card">
-        <div className="card-header">
-            {category}
-        </div>
-        <ul className="list-group list-group-flush">
-            <li className="list-group-item">{content}</li>
-        </ul>
-    </div>
+const Name = ({ name, number } : NameProps) => (
+    <h3 className="name">
+        #
+        {number}
+        {' '}
+        {name}
+    </h3>
 );
 
 export default Pokemon;

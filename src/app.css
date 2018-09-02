@@ -22,6 +22,16 @@ h6 {
     }
 }
 
+.name {
+    padding-left: 5%;
+    padding-bottom: 1%;
+    color: #606060;
+}
+
+.ability {
+    padding-left: 5%;
+}
+
 .card {
     width: 9rem;
 }
