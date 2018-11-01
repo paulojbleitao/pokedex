@@ -4,7 +4,7 @@ const fs = require('fs');
 
 async function getPokemonNames () {
     let json = { names: [] };
-    let query = await axios.get('http://localhost:3001/api/v2/pokemon/');
+    let query = await axios.get('https://crossorigin.me/https://pokeapi.co/api/v2/pokemon/');
     
     while (query.data.next) {
         query.data.results.forEach(pokemon => json.names.push(pokemon.name));
