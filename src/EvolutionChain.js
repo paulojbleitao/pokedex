@@ -15,7 +15,7 @@ type CellProps = {
 const EvolutionCell = ({ pokemon, handleSearch }: CellProps) => (
     <div className="col">
         <img
-          className="evolution-cell"
+          className="clickable"
           src={pokemon.sprites.front_default}
           alt=""
           onClick={() => handleSearch(pokemon.name)}

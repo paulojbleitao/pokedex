@@ -5,6 +5,7 @@ import Abilities from './Ability';
 import typesArray from './Type';
 import EvolutionChain from './EvolutionChain';
 import MoveList from './MoveList';
+import PokemonSprite from './PokemonSprite';
 import { formatString } from './util/util';
 
 type Props = {
@@ -23,11 +24,7 @@ const Pokemon = ({ data, handleSearch } : Props) => (
             </div>
             <div className="row">
                 <div className="col center">
-                    <img
-                      className="main"
-                      src={data.sprites.front_default}
-                      alt=""
-                    />
+                    <PokemonSprite sprites={data.sprites} />
                     <div>
                         {typesArray(data.types)}
                     </div>

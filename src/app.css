@@ -42,7 +42,7 @@ h1 {
     justify-content: center;
 }
 
-.evolution-cell {
+.clickable {
     cursor: pointer;
 }
 
