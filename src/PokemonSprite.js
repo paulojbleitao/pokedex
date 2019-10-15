@@ -31,10 +31,10 @@ class PokemonSprite extends React.Component<Props, State> {
 
         return (
             <img
-                className="main clickable"
-                src={sprite}
-                alt=""
-                onClick={this.handleClick}
+              className="main clickable"
+              src={sprite}
+              alt=""
+              onClick={this.handleClick}
             />
         );
     }

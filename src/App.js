@@ -13,7 +13,7 @@ type Props = {};
 type State = {
     pokemonData: any,
     failure: boolean,
-    loading: Boolean,
+    loading: boolean,
 }
 
 class App extends React.Component<Props, State> {
@@ -31,11 +31,15 @@ class App extends React.Component<Props, State> {
 
     handleSearch: string => void;
     handleSearch(pokemonName : string) {
-        this.setState({ loading: true })
+        this.setState({ loading: true });
         const lowerCase = pokemonName.toLowerCase();
         axios.get(`${BASE_URL}/pokemon/${lowerCase}/`)
             .then((result) => {
-                this.setState({ pokemonData: result.data, failure: false, loading: false });
+                this.setState({
+                    pokemonData: result.data,
+                    failure: false,
+                    loading: false,
+                });
             })
             .catch(() => {
                 this.setState({ failure: true, loading: false });
