@@ -1,15 +1,10 @@
 import React from 'react';
 import SpinnerIcon from './SpinnerIcon';
 
+import './Spinner.css';
+
 const Spinner = () => (
-    <div style={{
-        display: 'flex',
-        justify: 'center',
-        padding: {
-            top: '10px',
-        },
-        }}
-    >
+    <div className="spinner">
         <SpinnerIcon />
     </div>
 );
