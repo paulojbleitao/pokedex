@@ -10,3 +10,5 @@ To run the Pokedex locally, you need to have `npm` or `yarn` (preferably `yarn`)
 ## Contributing
 
 After getting the app running, you can proceed to editing the code! You can check out open [issues](https://github.com/paulojbleitao/pokedex/issues) or create your own if you want to fix a bug, create a new feature or do something else. Don't be afraid to get in touch!
+
+Make sure that the files you create or edit don't have linting or flow errors. To check, run `yarn lint` and `yarn run flow`. If there's anything you don't understand, just ask! :)
