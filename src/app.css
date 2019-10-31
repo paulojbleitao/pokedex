@@ -205,3 +205,7 @@ h1 {
 .react-autosuggest__suggestion--highlighted {
     background-color: #ddd;
 }
+
+.pointer {
+    cursor: pointer;
+}

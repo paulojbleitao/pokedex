@@ -88,7 +88,12 @@ class EvolutionChain extends React.Component<ChainProps, ChainState> {
         const { handleSearch } = this.props;
         const { chain } = this.state;
         const evolution = chain.map(pokemon => (
-            <EvolutionCell pokemon={pokemon} handleSearch={handleSearch} />));
+            <EvolutionCell
+              key={pokemon.name}
+              pokemon={pokemon}
+              handleSearch={handleSearch}
+            />
+        ));
         return <div className="row no-gutters">{evolution}</div>;
     }
 }

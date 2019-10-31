@@ -138,6 +138,7 @@ class MoveList extends React.Component<Props, State> {
         const firstFive = moves.slice(0, 5);
         const ml = firstFive.map(move => (
             <Move
+              key={move.name}
               name={formatString(move.name)}
               type={move.type.name}
               category={move.damage_class.name}

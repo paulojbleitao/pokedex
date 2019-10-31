@@ -27,6 +27,7 @@ class App extends React.Component<Props, State> {
         };
 
         this.handleSearch = this.handleSearch.bind(this);
+        this.resetSearch = this.resetSearch.bind(this);
     }
 
     handleSearch: string => void;
@@ -46,6 +47,11 @@ class App extends React.Component<Props, State> {
             });
     }
 
+    resetSearch: () => void;
+    resetSearch() {
+        this.setState({ pokemonData: null });
+    }
+
     render() {
         const { pokemonData, failure, loading } = this.state;
         const pokemon = pokemonData === null
@@ -54,9 +60,15 @@ class App extends React.Component<Props, State> {
         const showFailure = failure ? <Failure /> : null;
         const showLoading = loading ? <Spinner /> : null;
 
+        const headerCss = pokemon === null
+            ? 'center'
+            : 'center pointer';
+
         return (
             <div className="everything">
-                <h1 className="center">Pokedex</h1>
+                <h1 className={headerCss} onClick={this.resetSearch}>
+                    Pokedex
+                </h1>
                 <h6 className="center subtitle">
                     Type in a Pokemon&apos;s name and press search!
                 </h6>
