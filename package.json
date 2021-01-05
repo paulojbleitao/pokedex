@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "http://paulojbleitao.github.io/pokedex/",
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "bootstrap": "^4.0.0",
     "gh-pages": "^1.1.0",
     "jquery": "^3.3.1",
